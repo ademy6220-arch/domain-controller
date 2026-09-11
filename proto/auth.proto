@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package domain;
+
+service AuthEngine {
+  rpc ValidateUser (UserRequest) returns (UserResponse);
+}
+
+message UserRequest {
+  string username = 1;
+  string realm = 2;
+}
+
+message UserResponse {
+  bool exists = 1;
+  bool is_active = 2;
+  string key_hash = 3;
+}
